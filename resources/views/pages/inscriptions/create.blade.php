@@ -232,7 +232,7 @@
 
                                     <div class="text-center">
 
-                                        <p class="text-center">BENEFICIARIO: <b>ASOCIACION DERMATOLOGICA RADLA</b> - <b>RUC 20504537405</b></p>
+                                        <p class="text-center">BENEFICIARIO: <b>CÍRCULO DERMATOLÓGICO DEL PERÚ</b> - <b>RUC 20258221371</b></p>
 
                                         <div class="form-check form-check-primary form-check-inline">
                                             <input class="form-check-input cursor-pointer" type="radio" name="payment_method" value="Transferencia/Depósito" id="payment_method_transfer" checked>

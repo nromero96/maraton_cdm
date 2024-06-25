@@ -64,7 +64,7 @@
     <div class="container">
         <h2>INSCRIPCIÓN # {{ $datainscription->id }}: En Proceso</h2>
         <p>Estimado(a) <b>{{ $userinfo->name }} {{ $userinfo->lastname }} {{ $userinfo->second_lastname }}</b>,</p>
-        <p>Le informamos que su preinscripción para el <b>VII Maratón De Dermatología Pediatríca</b> ha sido recibida. El evento se llevará a cabo el 30 y 31 de Agosto del 2024 en el Swissôtel Lima.</p>
+        <p>Le informamos que su preinscripción para el <b>VII Maratón De Dermatología Pediátrica</b> ha sido recibida. El evento se llevará a cabo el 30 y 31 de Agosto del 2024 en el Swissôtel Lima.</p>
 
         <!-- Título "Detalle de tu Inscripción" -->
         <h3>Detalle de su inscripción</h3>
