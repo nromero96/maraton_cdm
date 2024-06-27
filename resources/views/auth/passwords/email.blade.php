@@ -46,7 +46,7 @@
                         <div class="auth-overlay" style="background-image: url({{asset('assets/img/bg-lg-1-min.jpg')}});background-size: cover;"></div>
                         <div class="auth-cover">
                             <div class="position-relative">
-                                <h2 class="mt-5 text-white px-2" style="font-weight: bold;">{{__('VII Maratón De Dermatología Pediátrica')}}</h2>
+                                <h2 class="mt-5 text-white px-2" style="font-weight: bold;">{{__('VII Maratón de Dermatología Pediátrica')}}</h2>
                                 <p class="text-white">{{ __('Swissôtel Lima, 30 y 31 de Agosto del 2024') }}</p>
                             </div>
                         </div>

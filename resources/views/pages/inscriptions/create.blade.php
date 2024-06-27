@@ -252,7 +252,7 @@
                                     <div id="dv_tranfer" class="mt-3">
                                         <p class="text-center"><img src="{{ asset('assets/img/logo-scotia.png') }}" style="width: 180px;border-radius: 10px;"></p>
                                         <p class="text-center">
-                                            <b>Cta. Cte. Dólares:</b> 0002920669<br>
+                                            <b>Cta. Cte. Dólares:</b> 000-2920669<br>
                                             <b>CCI:</b> 009-043-000002920669-15<br>
                                         </p>
                                         <div class="row">

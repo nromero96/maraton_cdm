@@ -160,7 +160,7 @@
                                 <label for="inputCountry" class="form-label fw-bold">{{__("País")}}</label>
                                 <select name="country" class="form-select" id="inputCountry" required>
                                     @foreach ($countries as $country)
-                                        @if($country->name == 'Perú')
+                                        @if($country->name == 'Perú' || $country->name == 'Brasil' || $country->name == 'México')
                                             <option value="{{$country->name}}" @if ($user->country == $country->name) selected="selected" @endif >{{$country->name}}</option>
                                         @endif
                                     @endforeach
