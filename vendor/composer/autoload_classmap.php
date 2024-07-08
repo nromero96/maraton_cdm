@@ -18,6 +18,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\VerificationController' => $baseDir . '/app/Http/Controllers/Auth/VerificationController.php',
     'App\\Http\\Controllers\\BeneficiarioBecaController' => $baseDir . '/app/Http/Controllers/BeneficiarioBecaController.php',
     'App\\Http\\Controllers\\CalendarController' => $baseDir . '/app/Http/Controllers/CalendarController.php',
+    'App\\Http\\Controllers\\CertificadoController' => $baseDir . '/app/Http/Controllers/CertificadoController.php',
     'App\\Http\\Controllers\\ContactController' => $baseDir . '/app/Http/Controllers/ContactController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\CountryStateController' => $baseDir . '/app/Http/Controllers/CountryStateController.php',

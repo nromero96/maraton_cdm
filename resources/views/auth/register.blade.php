@@ -60,7 +60,7 @@
                                             <a href="locale/en" class="" ><span class="badge {{ (app()->getLocale() == 'en') ? 'badge-light-primary' : 'badge-light-dark' }}">EN</span></span></a>
                                         </div>
                                         <h2>{{ __('Registrarme') }}</h2>
-                                        <p>{{ __('Complete sus datos para poder inscribirte.') }}</p>
+                                        <p>{{ __('Complete sus datos para poder inscribirse.') }}</p>
                                     </div>
 
                                     @if(session('error'))

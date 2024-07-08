@@ -7,7 +7,7 @@ if (!function_exists('setTitle')) :
 
         // echo $page_name;
 
-        $admin_name = ' | RADLA LIMA 2024';
+        $admin_name = ' | VII Maratón 2024';
 
         if ($page_name === 'dashboard') :
             echo __('Dashboard') . $admin_name;
