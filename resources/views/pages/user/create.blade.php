@@ -33,7 +33,7 @@
                         <form class="row g-3" action="{{ route('users.index') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="col-md-6">
-                                <label for="inputName" class="form-label fw-bold">{{__("Nombre")}}</label>
+                                <label for="inputName" class="form-label fw-bold">{{__("Nombres")}}</label>
                                 <input type="text" name="name" class="form-control" id="inputName" value="{{old('name')}}" required>
                                 {!!$errors->first("name", "<span class='text-danger'>:message</span>")!!}
                             </div>

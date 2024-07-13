@@ -34,7 +34,7 @@
                         @if ($user->confir_information)
                         <div class="row g-3">
                             <div class="col-md-4">
-                                <label class="form-label fw-bold">{{__("Nombre")}}</label>
+                                <label class="form-label fw-bold">{{__("Nombres")}}</label>
                                 <p class="form-control">{{$user->name}}</p>
                             </div>
 
@@ -129,7 +129,7 @@
                         <form class="row g-3" action="{{ route('users.updatemyprofile') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="col-md-4">
-                                <label for="inputName" class="form-label fw-bold">{{__("Nombre")}}</label>
+                                <label for="inputName" class="form-label fw-bold">{{__("Nombres")}}</label>
                                 <input type="text" name="name" class="form-control convert_mayus" id="inputName" value="{{$user->name}}" required>
                                 {!!$errors->first("name", "<span class='text-danger'>:message</span>")!!}
                             </div>

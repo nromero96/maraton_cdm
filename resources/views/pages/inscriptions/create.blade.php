@@ -39,7 +39,7 @@
                         <form class="row g-3" action="{{ route('inscriptions.store') }}" method="POST" id="formInscription" enctype="multipart/form-data">
                             @csrf
                             <div class="col-md-4">
-                                <label for="inputName" class="form-label fw-bold">{{__("Nombre")}}:</label>
+                                <label for="inputName" class="form-label fw-bold">{{__("Nombres")}}:</label>
                                 <p class="form-control">{{$user->name}}</p>
                             </div>
                             <div class="col-md-4">
