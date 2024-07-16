@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return false;
         }
     
-        if (selectedRadioPaymentMethod.value === 'Transferencia/Depósito') {
+        if (selectedRadioPaymentMethod.value === 'Transferencia/Depósito' && (selectedRadioCategoryInscription.value === '1' || selectedRadioCategoryInscription.value === '2')) {
             if (!validarArchivoFilePond('voucher_file', "Debe adjuntar un comprobante de transferencia o depósito")) {
                 return false;
             }
@@ -132,28 +132,6 @@ function calculateTotalPrice() {
     }
   });
 
-  //si hay un codigo especial marcar el metodo de pago como tarjeta y desabilitar el radio de transferencia
-  const specialCodeVerify = document.getElementById('specialcode_verify');
-  if(specialCodeVerify.value == 'valid' || totalPrice == 0){
-    const radioPaymentMethodCard = document.getElementById('payment_method_card');
-    const radioPaymentMethodTransfer = document.getElementById('payment_method_transfer');
-    radioPaymentMethodCard.checked = true;
-    radioPaymentMethodTransfer.setAttribute('disabled', 'disabled');
-    const dvTranfer = document.getElementById('dv_tranfer');
-    const dvCard = document.getElementById('dv_card');
-    dvTranfer.classList.add('d-none');
-    dvCard.classList.remove('d-none');
-  }else{
-    const radioPaymentMethodTransfer = document.getElementById('payment_method_transfer');
-    const radioPaymentMethodCard = document.getElementById('payment_method_card');
-    radioPaymentMethodTransfer.checked = true;
-    radioPaymentMethodTransfer.removeAttribute('disabled', 'disabled');
-    radioPaymentMethodCard.cheked = false;
-    const dvTranfer = document.getElementById('dv_tranfer');
-    const dvCard = document.getElementById('dv_card');
-    dvTranfer.classList.remove('d-none');
-    dvCard.classList.add('d-none');
-  }
 
   if(totalPrice == 0){
 
@@ -192,11 +170,6 @@ const descriptionSpecialCode = document.getElementById('sms_valid_vc');
 function handleCategoryRadioButtons(){
     const selectedRadioCategory = document.querySelector('input[type="radio"][name="category_inscription_id"]:checked');
     const selectedValueCategory = document.querySelector('input[type="radio"][name="category_inscription_id"]:checked').value;
-
-    const radioPaymentMethodTransfer = document.getElementById('payment_method_transfer');
-    const radioPaymentMethodCard = document.getElementById('payment_method_card');
-    const dvtranfer = document.getElementById('dv_tranfer');
-    const dvcard = document.getElementById('dv_card');
 
     if(selectedValueCategory === '1' || selectedValueCategory === '2'){
       
@@ -364,26 +337,6 @@ btnClearSpecialCode.addEventListener('click', function(){
     specialCodeVerify.value = '';
     calculateTotalPrice();
 });
-
-const inputPaymentMethod = document.querySelectorAll('input[type="radio"][name="payment_method"]');
-const dvTranfer = document.getElementById('dv_tranfer');
-const dvCard = document.getElementById('dv_card');
-
-inputPaymentMethod.forEach(radio => {
-    radio.addEventListener('change', handlePaymentMethod);
-});
-
-function handlePaymentMethod(){
-    const selectedValuePaymentMethod = document.querySelector('input[type="radio"][name="payment_method"]:checked').value;
-    if(selectedValuePaymentMethod === 'Transferencia/Depósito'){
-        dvTranfer.classList.remove('d-none');
-        dvCard.classList.add('d-none');
-    }else{
-        dvTranfer.classList.add('d-none');
-        dvCard.classList.remove('d-none');
-    }
-}
-
 
 const locale_es = {
   labelIdle: 'Arrastra y suelta tus archivos o <span class="filepond--label-action">Selecciona</span>',

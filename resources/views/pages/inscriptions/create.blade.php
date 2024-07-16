@@ -240,13 +240,6 @@
                                                 Transferencia bancaria o depósito
                                             </label>
                                         </div>
-
-                                        <div class="form-check form-check-primary form-check-inline">
-                                            <input class="form-check-input cursor-pointer" type="radio" name="payment_method" value="Tarjeta" id="payment_method_card">
-                                            <label class="form-check-label mb-0 cursor-pointer" for="payment_method_card">
-                                                Tarjeta de crédito/débito
-                                            </label>
-                                        </div>
                                     </div>
 
                                     <div id="dv_tranfer" class="mt-3">
@@ -265,14 +258,6 @@
                                             </div>
                                             <div class="col-md-2"></div>
                                         </div>
-                                    </div>
-
-                                    <div id="dv_card" class="pt-4 pb-4 d-none">
-                                        <p class="text-center">
-                                            <div class="alert alert-info alert-dismissible fade show text-center" role="alert">
-                                                Realiza tu pago con cualquier tarjeta de crédito o débito.<br>TE ENVIAREMOS UN LINK DE PAGO
-                                            </div>
-                                        </p>
                                     </div>
 
                                 </div>
