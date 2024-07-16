@@ -34,130 +34,130 @@
                         @if ($user->confir_information)
                         <div class="row g-3">
                             <div class="col-md-4">
-                                <label class="form-label fw-bold">{{__("Nombres")}}</label>
-                                <p class="form-control">{{$user->name}}</p>
+                                <label class="form-label fw-bold mb-1">{{__("Nombre completo")}}</label>
+                                <p class="form-control mb-0">{{$user->name}}</p>
                             </div>
 
                             <div class="col-md-4">
-                                <label class="form-label fw-bold">{{__("Apellido paterno")}}</label>
-                                <p class="form-control">{{$user->lastname}}</p>
+                                <label class="form-label fw-bold mb-1">{{__("Apellido paterno")}}</label>
+                                <p class="form-control mb-0">{{$user->lastname}}</p>
                             </div>
 
                             <div class="col-md-4">
-                                <label class="form-label fw-bold">{{__("Apellido materno")}}</label>
-                                <p class="form-control">{{$user->second_lastname}}</p>
+                                <label class="form-label fw-bold mb-1">{{__("Apellido materno")}}</label>
+                                <p class="form-control mb-0">{{$user->second_lastname}}</p>
                             </div>
 
                             <div class="col-md-4">
-                                <label class="form-label fw-bold">{{__("Tipo de documento")}}</label>
-                                <p class="form-control">{{$user->document_type}}</p>
+                                <label class="form-label fw-bold mb-1">{{__("Tipo de documento")}}</label>
+                                <p class="form-control mb-0">{{$user->document_type}}</p>
                             </div>
                             <div class="col-md-4">
-                                <label class="form-label fw-bold">{{__("Número de documento")}}</label>
-                                <p class="form-control">{{$user->document_number}}</p>
+                                <label class="form-label fw-bold mb-1">{{__("Número de documento")}}</label>
+                                <p class="form-control mb-0">{{$user->document_number}}</p>
                             </div>
                             <div class="col-md-4"></div>
                             <div class="col-md-4">
-                                <label class="form-label fw-bold">{{__("País")}}</label>
-                                <p class="form-control">{{$user->country}}</p>
+                                <label class="form-label fw-bold mb-1">{{__("País")}}</label>
+                                <p class="form-control mb-0">{{$user->country}}</p>
                             </div>
                             <div class="col-md-4">
-                                <label class="form-label fw-bold">{{__("Estado/Provincia")}}</label>
-                                <p class="form-control">{{ $user->state }}</p>
+                                <label class="form-label fw-bold mb-1">{{__("Estado/Provincia")}}</label>
+                                <p class="form-control mb-0">{{ $user->state }}</p>
                             </div>
                             <div class="col-md-4">
-                                <label class="form-label fw-bold">{{__("Ciudad")}}</label>
-                                <p class="form-control">{{$user->city}}</p>
+                                <label class="form-label fw-bold mb-1">{{__("Ciudad")}}</label>
+                                <p class="form-control mb-0">{{$user->city}}</p>
                             </div>
                             <div class="col-md-8">
-                                <label class="form-label fw-bold">{{__("Dirección")}}</label>
-                                <p class="form-control">{{$user->address}}</p>
+                                <label class="form-label fw-bold mb-1">{{__("Dirección")}}</label>
+                                <p class="form-control mb-0">{{$user->address}}</p>
                             </div>
                             <div class="col-md-4">
-                                <label class="form-label fw-bold">{{__("Código Postal")}}</label>
-                                <p class="form-control">{{$user->postal_code}}</p>
+                                <label class="form-label fw-bold mb-1">{{__("Código Postal")}}</label>
+                                <p class="form-control mb-0">{{$user->postal_code}}</p>
                             </div>
 
                             <div class="col-md-4">
-                                <label class="form-label fw-bold">{{__("Teléfono")}}</label>
+                                <label class="form-label fw-bold mb-1">{{__("Teléfono")}}</label>
                                 <div class="d-flex">
                                     <div class="w-25">
-                                        <p class="form-control">{{ $user->phone_code}}</p>
-                                        <small>{{ __('Cod. País') }}</small>
+                                        <p class="form-control mb-0">{{ $user->phone_code}}</p>
+                                        <small class="mt-1">{{ __('Cod. País') }}</small>
                                     </div>
                                     <div class="w-25">
-                                        <p class="form-control">{{$user->phone_code_city}}</p>
-                                        <small>{{ __('Ciudad') }}</small>
+                                        <p class="form-control mb-0">{{$user->phone_code_city}}</p>
+                                        <small class="mt-1">{{ __('Ciudad') }}</small>
                                     </div>
                                     <div class="w-50">
-                                        <p class="form-control">{{$user->phone_number}}</p>
-                                        <small>{{ __('Número') }}</small>
+                                        <p class="form-control mb-0">{{$user->phone_number}}</p>
+                                        <small class="mt-1">{{ __('Número') }}</small>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-4">
-                                <label class="form-label fw-bold">{{__("WhatsApp")}}</label>
+                                <label class="form-label fw-bold mb-1">{{__("WhatsApp")}}</label>
                                 <div class="d-flex">
                                     <div class="w-25">
-                                        <p class="form-control">{{$user->whatsapp_code}}</p>
-                                        <small>{{ __('Cod. País') }}</small>
+                                        <p class="form-control mb-0">{{$user->whatsapp_code}}</p>
+                                        <small class="mt-1">{{ __('Cod. País') }}</small>
                                     </div>
                                     <div class="w-75">
-                                        <p class="form-control">{{$user->whatsapp_number}}</p>
-                                        <small>{{ __('Número') }}</small>
+                                        <p class="form-control mb-0">{{$user->whatsapp_number}}</p>
+                                        <small class="mt-1">{{ __('Número') }}</small>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-12">
-                                <label class="form-label fw-bold">{{__("Centro de trabajo")}}</label>
-                                <p class="form-control">{{$user->workplace}}</p>
+                                <label class="form-label fw-bold mb-1">{{__("Centro de trabajo")}}</label>
+                                <p class="form-control mb-0">{{$user->workplace}}</p>
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label fw-bold">{{__("Email")}}</label>
-                                <p class="form-control">{{$user->email}}</p>
+                                <label class="form-label fw-bold mb-1">{{__("Email")}}</label>
+                                <p class="form-control mb-0">{{$user->email}}</p>
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label fw-bold">{{__("Solapín")}}: <small class="fw-normal">({{ __("Solamente un nombre y un apellido") }})</small></label>
-                                <p class="form-control">{{ $user->solapin_name }}</p>
+                                <label class="form-label fw-bold mb-1">{{__("Solapín")}}: <small class="fw-normal">({{ __("Solamente un nombre y un apellido") }})</small></label>
+                                <p class="form-control mb-0">{{ $user->solapin_name }}</p>
                             </div>
                         </div>
                         @else
                         <form class="row g-3" action="{{ route('users.updatemyprofile') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="col-md-4">
-                                <label for="inputName" class="form-label fw-bold">{{__("Nombres")}}</label>
+                                <label for="inputName" class="form-label fw-bold mb-1">{{__("Nombre completo")}}</label>
                                 <input type="text" name="name" class="form-control convert_mayus" id="inputName" value="{{$user->name}}" required>
                                 {!!$errors->first("name", "<span class='text-danger'>:message</span>")!!}
                             </div>
                             <div class="col-md-4">
-                                <label for="inputLastName" class="form-label fw-bold">{{__("Apellido paterno")}}</label>
+                                <label for="inputLastName" class="form-label fw-bold mb-1">{{__("Apellido paterno")}}</label>
                                 <input type="text" name="lastname" class="form-control convert_mayus" id="inputLastName" value="{{$user->lastname}}" required>
                                 {!!$errors->first("lastname", "<span class='text-danger'>:message</span>")!!}
                             </div>
                             <div class="col-md-4">
-                                <label for="inputSecondLastName" class="form-label fw-bold">{{__("Apellido materno")}}</label>
+                                <label for="inputSecondLastName" class="form-label fw-bold mb-1">{{__("Apellido materno")}}</label>
                                 <input type="text" name="second_lastname" class="form-control convert_mayus" id="inputSecondLastName" value="{{$user->second_lastname}}">
                                 {!!$errors->first("second_lastname", "<span class='text-danger'>:message</span>")!!}
                             </div>
                             <div class="col-md-4">
-                                <label for="inputDocumentType" class="form-label fw-bold">{{__("Tipo de documento")}}</label>
+                                <label for="inputDocumentType" class="form-label fw-bold mb-1">{{__("Tipo de documento")}}</label>
                                 <select name="document_type" class="form-select" id="inputDocumentType" required>
                                     <option value="DNI" @if ($user->document_type == 'DNI') selected="selected" @endif >DNI</option>
                                 </select>
                                 {!!$errors->first("document_type", "<span class='text-danger'>:message</span>")!!}
                             </div>
                             <div class="col-md-4">
-                                <label for="inputDocumentNumber" class="form-label fw-bold">{{__("Número de documento")}}</label>
+                                <label for="inputDocumentNumber" class="form-label fw-bold mb-1">{{__("Número de documento")}}</label>
                                 <input type="text" name="document_number" class="form-control" id="inputDocumentNumber" value="{{$user->document_number}}" required>
                                 {!!$errors->first("document_number", "<span class='text-danger'>:message</span>")!!}
                             </div>
                             <div class="col-md-4"></div>
                             <div class="col-md-4">
-                                <label for="inputCountry" class="form-label fw-bold">{{__("País")}}</label>
+                                <label for="inputCountry" class="form-label fw-bold mb-1">{{__("País")}}</label>
                                 <select name="country" class="form-select" id="inputCountry" required>
                                     @foreach ($countries as $country)
                                         @if($country->name == 'Perú' || $country->name == 'Brasil' || $country->name == 'México')
@@ -168,28 +168,28 @@
                                 {!!$errors->first("country", "<span class='text-danger'>:message</span>")!!}
                             </div>
                             <div class="col-md-4">
-                                <label for="inputState" class="form-label fw-bold">{{__("Estado/Provincia")}}</label>
+                                <label for="inputState" class="form-label fw-bold mb-1">{{__("Estado/Provincia")}}</label>
                                 <input type="text" name="state" class="form-control" id="inputState" value="{{$user->state}}" required>
                                 {!!$errors->first("state", "<span class='text-danger'>:message</span>")!!}
                             </div>
                             <div class="col-md-4">
-                                <label for="inputCity" class="form-label fw-bold">{{__("Ciudad")}}</label>
+                                <label for="inputCity" class="form-label fw-bold mb-1">{{__("Ciudad")}}</label>
                                 <input type="text" name="city" class="form-control" id="inputCity" value="{{$user->city}}" required>
                                 {!!$errors->first("city", "<span class='text-danger'>:message</span>")!!}
                             </div>
                             <div class="col-md-8">
-                                <label for="inputAddress" class="form-label fw-bold">{{__("Dirección")}}</label>
+                                <label for="inputAddress" class="form-label fw-bold mb-1">{{__("Dirección")}}</label>
                                 <input type="text" name="address" class="form-control" id="inputAddress" value="{{$user->address}}" required>
                                 {!!$errors->first("address", "<span class='text-danger'>:message</span>")!!}
                             </div>
                             <div class="col-md-4">
-                                <label for="inputPostalCode" class="form-label fw-bold">{{__("Código Postal")}}</label>
+                                <label for="inputPostalCode" class="form-label fw-bold mb-1">{{__("Código Postal")}}</label>
                                 <input type="number" name="postal_code" class="form-control" id="inputPostalCode" value="{{$user->postal_code}}" required>
                                 {!!$errors->first("postal_code", "<span class='text-danger'>:message</span>")!!}
                             </div>
 
                             <div class="col-md-4">
-                                <label for="inputPhoneNumber" class="form-label fw-bold">{{__("Teléfono")}}</label>
+                                <label for="inputPhoneNumber" class="form-label fw-bold mb-1">{{__("Teléfono")}}</label>
                                 <div class="d-flex">
                                     <div class="w-25">
                                         <input type="text" name="phone_code" class="form-control rounded-0 rounded-start" id="inputPhoneCode" value="51" placeholder="+00" readonly>
@@ -210,7 +210,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="inputPhoneNumber" class="form-label fw-bold">{{__("WhatsApp")}}</label>
+                                <label for="inputPhoneNumber" class="form-label fw-bold mb-1">{{__("WhatsApp")}}</label>
                                 <div class="d-flex">
                                     <div class="w-25">
                                         <input type="text" name="whatsapp_code" class="form-control rounded-0 rounded-start" id="inputPhoneCode" value="51" placeholder="+00" readonly>
@@ -226,19 +226,19 @@
                             </div>
 
                             <div class="col-md-12">
-                                <label for="inputWorkplace" class="form-label fw-bold">{{__("Centro de trabajo")}}</label>
+                                <label for="inputWorkplace" class="form-label fw-bold mb-1">{{__("Centro de trabajo")}}</label>
                                 <input type="text" name="workplace" class="form-control" id="inputWorkplace" value="{{$user->workplace}}" required>
                                 {!!$errors->first("workplace", "<span class='text-danger'>:message</span>")!!}
                             </div>
 
                             <div class="col-md-6">
-                                <label for="inputEmail" class="form-label fw-bold">{{__("Email")}}</label>
+                                <label for="inputEmail" class="form-label fw-bold mb-1">{{__("Email")}}</label>
                                 <input type="email" name="email" class="form-control" id="inputEmail" value="{{$user->email}}" readonly>
                                 {!!$errors->first("email", "<span class='text-danger'>:message</span>")!!}
                             </div>
 
                             <div class="col-md-6">
-                                <label for="inputSolapin" class="form-label fw-bold">{{__("Solapín")}} <small class="fw-normal">({{ __("Un nombre y un apellido") }})</small></label>
+                                <label for="inputSolapin" class="form-label fw-bold mb-1">{{__("Solapín")}} <small class="fw-normal">({{ __("Un nombre y un apellido") }})</small></label>
                                 <input type="text" class="form-control convert_mayus" name="solapin_name" id="inputSolapin" value="{{ $user->solapin_name }}" placeholder="Poner un nombre y un apellido" required>
                                 {!!$errors->first("solapin_name", "<span class='text-danger'>:message</span>")!!}
                             </div>

@@ -634,7 +634,7 @@ span.red {
 
 .form-check-input {
   background-color: #e0e6ed;
-  border-color: #e0e6ed;
+  border-color: rgba(141, 141, 141, 0.5529411765);
   width: 17px;
   height: 17px;
   margin-top: 0.21em;
