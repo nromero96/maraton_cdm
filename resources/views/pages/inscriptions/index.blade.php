@@ -10,13 +10,13 @@
 
         <div class="row layout-spacing">
             <div class="col-xl-12 col-lg-12 col-sm-12 layout-top-spacing layout-spacing">
-                
+
                 @php
                     $user = Auth::user();
                     //get user logged role
                     $userRole = $user->roles->pluck('name')->toArray();
                 @endphp
-                    
+
                 @if($user->confir_information == '' && $userRole[0] != 'Administrador')
                     <div class="alert alert-danger text-center" role="alert">
                         <strong>{{__("¡Atención!")}}</strong> {{__("Debes completar tu información personal para poder inscribirte.")}}<br><br>
@@ -26,7 +26,7 @@
 
                     @if(session('success'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <strong>{{__("¡Bien hecho!")}}</strong> 
+                            <strong>{{__("¡Bien hecho!")}}</strong>
                             {{ session('success') }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
@@ -34,12 +34,12 @@
 
                     @if(session('error'))
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>{{__("¡Atención!")}}</strong> 
+                            <strong>{{__("¡Atención!")}}</strong>
                             {{ session('error') }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
-                    <div class="statbox widget box box-shadow">    
+                    <div class="statbox widget box box-shadow">
                         <div class="widget-header pb-2 pt-2">
                             <form action="{{ route('inscriptions.index') }}" method="GET" class="mb-0" >
                                 <div class="row">
@@ -55,17 +55,22 @@
                                         </select>
                                     </div>
                                     <div class="col-md-4 align-self-center">
-                                        <a href="{{ route('inscriptions.create') }}" class="btn btn-secondary">Nuevo</a>
-                                        
-                                        <a href="{{ route('inscriptions.rejects') }}" class="btn btn-danger px-2">
-                                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M10 11v6"></path><path d="M14 11v6"></path></svg>
-                                        </a>
-                                        
-                                        @if(\Auth::user()->hasRole('Administrador') || \Auth::user()->hasRole('Secretaria')) 
+
+                                        @if(\Auth::user()->hasRole('Participante'))
+                                            <a href="{{ route('inscriptions.create') }}" class="btn btn-secondary">Nuevo</a>
+                                        @endif
+
+                                        @if(\Auth::user()->hasRole('Administrador') || \Auth::user()->hasRole('Secretaria'))
+                                            <a href="{{ route('inscriptions.manualregistrationparticipant') }}" class="btn btn-secondary">Nuevo</a>
+
+                                            <a href="{{ route('inscriptions.rejects') }}" class="btn btn-danger px-2">
+                                                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><path d="M10 11v6"></path><path d="M14 11v6"></path></svg>
+                                            </a>
+
                                             <a href="{{ route('inscriptions.exportexcel') }}" class="btn btn-success">
                                                 Excel
                                             </a>
-                                            
+
                                             <a href="{{ route('inscriptions.accompanists') }}" class="btn btn-info">
                                                 <svg width="21" height="21" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
@@ -96,7 +101,7 @@
                                 </div>
                             </form>
                         </div>
-                            
+
                         <div class="widget-content widget-content-area pt-0">
                             <div class="table-responsive">
                                 <table class="table table-hover table-striped table-bordered mb-0" id="inscrip-list">
@@ -151,21 +156,21 @@
 
                                                         @if($inscription->status == 'Pagado')
                                                             <span class="badge badge-light-success">{{ $inscription->status .' ('.$textmp.')' }}</span>
-                                                                    
+
                                                             @if($inscription->status_compr == 'Informado')
-                                                                        
+
                                                                 @if($inscription->compr_pdf == 'T')
-                                                                    <a href="{{ asset('storage/uploads/comprobantes_file').'/'.$inscription->num_compr.'.pdf'}}" target="_blank" class="text-info">{{__("PDF")}}</a> 
+                                                                    <a href="{{ asset('storage/uploads/comprobantes_file').'/'.$inscription->num_compr.'.pdf'}}" target="_blank" class="text-info">{{__("PDF")}}</a>
                                                                 @endif
 
                                                                 @if($inscription->compr_xml == 'T')
-                                                                | <a href="{{ asset('storage/uploads/comprobantes_file').'/'.$inscription->num_compr.'.zip'}}" target="_blank" class="text-info">{{__("XML")}}</a> 
+                                                                | <a href="{{ asset('storage/uploads/comprobantes_file').'/'.$inscription->num_compr.'.zip'}}" target="_blank" class="text-info">{{__("XML")}}</a>
                                                                 @endif
 
                                                                 @if($inscription->compr_cdr == 'T')
                                                                 | <a href="{{ asset('storage/uploads/comprobantes_file').'/R'.$inscription->num_compr.'.zip'}}" target="_blank" class="text-info">{{__("CDR")}}</a>
                                                                 @endif
-                                                                        
+
                                                             @endif
 
                                                         @elseif ($inscription->status == 'Procesando')
@@ -201,7 +206,7 @@
                         </div>
                     </div>
                 @endif
-                
+
             </div>
         </div>
 

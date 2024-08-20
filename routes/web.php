@@ -113,7 +113,7 @@ Route::group(['middleware' => ['auth', 'ensureStatusActive']], function () {
     });
 
     //Search Online Posters
-Route::get('online-search-posters', [PosterController::class, 'searchPostersPage'])->name('searchPostersPage');
+    Route::get('online-search-posters', [PosterController::class, 'searchPostersPage'])->name('searchPostersPage');
 
     // $this->middleware
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard.index');
@@ -123,7 +123,7 @@ Route::get('online-search-posters', [PosterController::class, 'searchPostersPage
 
     //Users
     Route::resource('users', UserController::class)->names('users');
-    
+
     //Roles
     Route::resource('roles', RoleController::class)->names('roles');
 
@@ -140,6 +140,9 @@ Route::get('online-search-posters', [PosterController::class, 'searchPostersPage
     Route::post('/inscriptions-request-comprobante/{id}', [InscriptionController::class, 'requestComprobante'])->name('inscriptions.requestcomprobante');
     Route::get('/exportar-excel-inscriptions', [InscriptionController::class, 'exportExcelInscriptions'])->name('inscriptions.exportexcel');
 
+    Route::get('/manual-registration-participant', [InscriptionController::class, 'formManualRegistrationParticipant'])->name('inscriptions.manualregistrationparticipant');
+    Route::post('/store-manual-registration-participant', [InscriptionController::class, 'storeManualRegistrationParticipant'])->name('inscriptions.storemanualregistrationparticipant');
+
     Route::get('payment-niubiz/{inscription}', [InscriptionController::class, 'paymentNiubiz'])->name('inscriptions.paymentniubiz');
     Route::post('confirm-payment-niubiz', [InscriptionController::class, 'confirmPaymentNiubiz'])->name('inscriptions.confirmpaymentniubiz');
 
@@ -153,7 +156,7 @@ Route::get('online-search-posters', [PosterController::class, 'searchPostersPage
     Route::put('works/{id}/update-status', [WorkController::class, 'updateStatus'])->name('works.updatestatus');
     Route::get('/exportar-excel-works', [WorkController::class, 'exportExcelWorks'])->name('works.exportexcel');
     Route::put('sendmail-workaccepted/{id}', [WorkController::class, 'sendMailWorkAccepted'])->name('works.sendmailworkaccepted');
-    
+
     //Posters
     Route::resource('posters', PosterController::class)->names('posters');
     //poster.upload

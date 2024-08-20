@@ -21,7 +21,7 @@
             <link href="{{ asset('plugins/src/apex/apexcharts.css') }}" rel="stylesheet" type="text/css">
             <link href="{{ asset('assets/css/light/dashboard/dash_1.css') }}" rel="stylesheet" type="text/css" />
             <link href="{{ asset('assets/css/dark/dashboard/dash_1.css') }}" rel="stylesheet" type="text/css" />
-            
+
             <style>
                 .btndowcert{
                     position: relative;
@@ -98,12 +98,19 @@
             <link href="{{ asset('plugins/css/light/filepond/custom-filepond.css') }}" rel="stylesheet" type="text/css" />
             <link href="{{ asset('plugins/css/dark/filepond/custom-filepond.css') }}" rel="stylesheet" type="text/css" />
             @break
-        
+
+        @case('inscriptions_manual')
+            {{-- Inscriptions --}}
+            <link href="{{ asset('plugins/src/filepond/filepond.min.css') }}" rel="stylesheet" type="text/css" />
+            <link href="{{ asset('plugins/css/light/filepond/custom-filepond.css') }}" rel="stylesheet" type="text/css" />
+            <link href="{{ asset('plugins/css/dark/filepond/custom-filepond.css') }}" rel="stylesheet" type="text/css" />
+            @break
+
         @case('posters')
             {{-- Posters --}}
             <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/light/components/modal.css') }}">
             <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/dark/components/modal.css') }}">
-            
+
             <link href="{{ asset('plugins/src/filepond/filepond.min.css') }}" rel="stylesheet" type="text/css" />
             <link href="{{ asset('plugins/css/light/filepond/custom-filepond.css') }}" rel="stylesheet" type="text/css" />
             <link href="{{ asset('plugins/css/dark/filepond/custom-filepond.css') }}" rel="stylesheet" type="text/css" />
@@ -121,7 +128,7 @@
             <link rel="stylesheet" type="text/css" href="{{asset('assets/css/light/apps/beneficiarios_becas-list.css')}}">
             <link rel="stylesheet" type="text/css" href="{{asset('assets/css/dark/apps/beneficiarios_becas-list.css')}}">
             @break
-        
+
         @case('coupons_edit')
             {{-- Coupons --}}
             <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/light/components/modal.css') }}">
@@ -264,7 +271,7 @@
             <link href="{{ asset('assets/css/dark/forms/switches.css') }}" rel="stylesheet" type="text/css" />
 
             @break
-        
+
         @case('roleedit')
             {{-- Users Create --}}
             <link href="{{ asset('assets/css/light/forms/switches.css') }}" rel="stylesheet" type="text/css" />
@@ -355,7 +362,7 @@
         @case('customers')
             <link href="{{ asset('assets/css/light/components/modal.css') }}" rel="stylesheet" type="text/css">
             <link href="{{ asset('assets/css/light/apps/contacts.css') }}" rel="stylesheet" type="text/css" />
-    
+
             <link href="{{ asset('assets/css/dark/components/modal.css') }}" rel="stylesheet" type="text/css">
             <link href="{{ asset('assets/css/dark/apps/contacts.css') }}" rel="stylesheet" type="text/css" />
             @break
@@ -375,12 +382,12 @@
             {{-- All quotes --}}
             <link href="{{ asset('assets/css/light/components/modal.css') }}" rel="stylesheet" type="text/css">
             <link href="{{ asset('assets/css/light/apps/notes.css') }}" rel="stylesheet" type="text/css" />
-    
+
             <link href="{{ asset('assets/css/dark/components/modal.css') }}" rel="stylesheet" type="text/css">
             <link href="{{ asset('assets/css/dark/apps/notes.css') }}" rel="stylesheet" type="text/css" />
             @break
 
-    
+
         @default
             <script>console.log('No custom Styles available.')</script>
     @endswitch

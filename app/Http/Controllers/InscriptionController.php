@@ -14,10 +14,12 @@ use App\Models\Accompanist;
 use App\Models\Statusnote;
 use App\Models\SpecialCode;
 use App\Models\BeneficiarioBeca;
+use App\Models\Country;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -93,7 +95,7 @@ class InscriptionController extends Controller
                 ->orderBy('inscriptions.id', 'desc')
                 ->paginate($listforpage);
         }
-        
+
 
         return view('pages.inscriptions.index')->with($data)->with('inscriptions', $inscriptions);
     }
@@ -136,7 +138,7 @@ class InscriptionController extends Controller
             })
 
             ->paginate($listforpage);
-        
+
         return view('pages.inscriptions.accompanists')->with($data)->with('accompanists', $accompanists);
 
 
@@ -168,7 +170,7 @@ class InscriptionController extends Controller
                 ->orderBy('inscriptions.id', 'desc')
                 ->get();
         }
-        
+
 
         return view('pages.inscriptions.rejects')->with($data)->with('inscriptions', $inscriptions);
     }
@@ -215,8 +217,9 @@ class InscriptionController extends Controller
     {
 
         $amount_especialcode = 0;
+
         //si $request->category_inscription_id == 7 validar que exista el código especial
-        if($request->category_inscription_id == 7){
+        if($request->category_inscription_id == 3){
             //get amount code special
             $specialcode = SpecialCode::where('code', $request->specialcode)->first();
             if($specialcode){
@@ -255,9 +258,9 @@ class InscriptionController extends Controller
         $inscription = new Inscription();
         $inscription->user_id = $iduser;
         $inscription->category_inscription_id = $request->category_inscription_id;
-        
+
         $category_inscription = CategoryInscription::find($request->category_inscription_id);
-        
+
         //si $amount_especialcode es mayor a 0, poner el precio del código especial
         if($amount_especialcode > 0){
             $inscription->price_category = $amount_especialcode;
@@ -268,7 +271,7 @@ class InscriptionController extends Controller
         if($request->accompanist != ''){
             $inscription->accompanist_id = $data_accompanist_id;
             $category_inscription_accompanist = CategoryInscription::where('name', 'Acompañante')->first();
-            
+
             if($request->category_inscription_id == 9 || $request->category_inscription_id == 11){
                 $inscription->price_accompanist = 0;
             }else{
@@ -374,7 +377,7 @@ class InscriptionController extends Controller
             return redirect()->route('inscriptions.show', ['inscription' => $inscription->id])->with('success', 'Inscripción realizada con éxito');
         }
 
-        
+
 
     }
 
@@ -398,16 +401,16 @@ class InscriptionController extends Controller
                 'has_scrollspy' => 0,
                 'scrollspy_offset' => '',
             ];
-    
+
             $inscription = Inscription::join('category_inscriptions', 'inscriptions.category_inscription_id', '=', 'category_inscriptions.id')
             ->join('users', 'inscriptions.user_id', '=', 'users.id')
             ->leftJoin('accompanists', 'inscriptions.accompanist_id', '=', 'accompanists.id')
-            ->select('inscriptions.*', 
-                    'category_inscriptions.name as category_inscription_name', 
-                    'users.name as user_name', 
-                    'users.lastname as user_lastname', 
-                    'users.second_lastname as user_second_lastname', 
-                    'users.document_type as user_document_type', 
+            ->select('inscriptions.*',
+                    'category_inscriptions.name as category_inscription_name',
+                    'users.name as user_name',
+                    'users.lastname as user_lastname',
+                    'users.second_lastname as user_second_lastname',
+                    'users.document_type as user_document_type',
                     'users.document_number as user_document_number',
                     'users.country as user_country',
                     'users.state as user_state',
@@ -451,23 +454,23 @@ class InscriptionController extends Controller
     {
         //solo mostrar al rol de Administrador y Secretaria
         if (\Auth::user()->hasRole('Administrador') || \Auth::user()->hasRole('Secretaria')) {
-            
+
             $data = [
                 'category_name' => 'inscriptions',
                 'page_name' => 'inscriptions_edit',
                 'has_scrollspy' => 0,
                 'scrollspy_offset' => '',
             ];
-    
+
             $inscription = Inscription::join('category_inscriptions', 'inscriptions.category_inscription_id', '=', 'category_inscriptions.id')
             ->join('users', 'inscriptions.user_id', '=', 'users.id')
             ->leftJoin('accompanists', 'inscriptions.accompanist_id', '=', 'accompanists.id')
-            ->select('inscriptions.*', 
-                    'category_inscriptions.name as category_inscription_name', 
-                    'users.name as user_name', 
-                    'users.lastname as user_lastname', 
-                    'users.second_lastname as user_second_lastname', 
-                    'users.document_type as user_document_type', 
+            ->select('inscriptions.*',
+                    'category_inscriptions.name as category_inscription_name',
+                    'users.name as user_name',
+                    'users.lastname as user_lastname',
+                    'users.second_lastname as user_second_lastname',
+                    'users.document_type as user_document_type',
                     'users.document_number as user_document_number',
                     'users.country as user_country',
                     'users.state as user_state',
@@ -515,7 +518,7 @@ class InscriptionController extends Controller
     {
         //solo mostrar al rol de Administrador y Secretaria
         if (\Auth::user()->hasRole('Administrador') || \Auth::user()->hasRole('Secretaria')) {
-            
+
             // Obtener la inscripción actual
             $inscription = Inscription::findOrFail($id);
 
@@ -582,6 +585,142 @@ class InscriptionController extends Controller
         //
     }
 
+    public function formManualRegistrationParticipant(){
+        $data = [
+            'category_name' => 'inscriptions',
+            'page_name' => 'inscriptions_manual',
+            'has_scrollspy' => 0,
+            'scrollspy_offset' => '',
+        ];
+
+        //get CategoryInscription
+        $category_inscriptions = CategoryInscription::orderBy('order', 'asc')->get();
+        $countries = Country::orderBy('name', 'asc')->get();
+
+        //solo los roles de Administrador y Secretaria pueden ver esta vista
+        if (\Auth::user()->hasRole('Administrador') || \Auth::user()->hasRole('Secretaria')) {
+            return view('pages.inscriptions.manual-registration-participant')->with($data)->with('category_inscriptions', $category_inscriptions)->with('countries', $countries);
+        }else{
+            return redirect()->route('inscriptions.index')->with('error', 'No tiene permisos para ver esta vista');
+        }
+
+
+    }
+
+    public function storeManualRegistrationParticipant(Request $request){
+
+        // Validación email único
+        $validatedData = $request->validate([
+            'email' => 'required|email|unique:users,email',
+        ]);
+
+        DB::beginTransaction();
+
+        try {
+            // Registrar usuario y devolver ID
+            $user = new User();
+            $user->name = $request->name ?? '';
+            $user->lastname = $request->lastname ?? '';
+            $user->second_lastname = $request->second_lastname ?? '';
+            $user->email = $request->email ?? '';
+            $user->country = $request->country ?? '';
+            $user->password = bcrypt($request->inputPassword) ?? '';
+            $user->solapin_name = $request->inputSolapin ?? '';
+            $user->photo = 'default-profile.jpg';
+            $user->status = 'active';
+            $user->save();
+            $user->assignRole('Participante');
+            $iduser = $user->id;
+
+            // Insertar inscripción
+            $inscription = new Inscription();
+            $inscription->user_id = $iduser;
+            $inscription->category_inscription_id = $request->category_inscription_id;
+
+            $category_inscription = CategoryInscription::find($request->category_inscription_id);
+
+            $inscription->price_category = $category_inscription->price;
+            $inscription->price_accompanist = 0;
+            $inscription->total = $inscription->price_category + $inscription->price_accompanist;
+            $inscription->special_code = $request->specialcode;
+            $inscription->invoice = $request->invoice;
+            $inscription->invoice_ruc = $request->invoice_ruc;
+            $inscription->invoice_social_reason = $request->invoice_social_reason;
+            $inscription->invoice_address = $request->invoice_address;
+            $inscription->payment_method = $request->payment_method;
+            $inscription->voucher_file = '';
+            $inscription->save();
+
+            // Manejo de documentos temporales
+            $temporaryfile_document_file = TemporaryFile::where('folder', $request->document_file)->first();
+            if ($temporaryfile_document_file) {
+                Storage::move('public/uploads/tmp/'.$request->document_file.'/'.$temporaryfile_document_file->filename, 'public/uploads/document_file/'.$temporaryfile_document_file->filename);
+                $inscription->document_file = $temporaryfile_document_file->filename;
+                $inscription->save();
+                rmdir(storage_path('app/public/uploads/tmp/'.$request->document_file));
+                $temporaryfile_document_file->delete();
+            }
+
+            $temporaryfile_voucher_file = TemporaryFile::where('folder', $request->voucher_file)->first();
+            if ($temporaryfile_voucher_file) {
+                Storage::move('public/uploads/tmp/'.$request->voucher_file.'/'.$temporaryfile_voucher_file->filename, 'public/uploads/voucher_file/'.$temporaryfile_voucher_file->filename);
+                $inscription->voucher_file = $temporaryfile_voucher_file->filename;
+                $inscription->save();
+                rmdir(storage_path('app/public/uploads/tmp/'.$request->voucher_file));
+                $temporaryfile_voucher_file->delete();
+            }
+
+            if ($request->payment_method == 'Transferencia/Depósito') {
+                $inscription->status = 'Procesando';
+                $inscription->save();
+
+                // Enviar correo
+                $user = User::find($iduser);
+                $datainscription = Inscription::join('category_inscriptions', 'inscriptions.category_inscription_id', '=', 'category_inscriptions.id')
+                    ->select('inscriptions.*', 'category_inscriptions.name as category_inscription_name')
+                    ->where('inscriptions.id', $inscription->id)
+                    ->first();
+                $data = [
+                    'user' => $user,
+                    'datainscription' => $datainscription,
+                ];
+
+                Mail::to($user->email)
+                    ->cc(config('services.correonotificacion.inscripcion'))
+                    ->send(new \App\Mail\InscriptionCreated($data));
+
+                DB::commit(); // Confirmar la transacción
+                return redirect()->route('inscriptions.index')->with('success', 'Inscripción realizada con éxito');
+            } else if ($request->payment_method == 'Tarjeta') {
+                $inscription->status = 'Pendiente';
+                $inscription->save();
+
+                // Enviar correo
+                $user = User::find($iduser);
+                $datainscription = Inscription::join('category_inscriptions', 'inscriptions.category_inscription_id', '=', 'category_inscriptions.id')
+                    ->select('inscriptions.*', 'category_inscriptions.name as category_inscription_name')
+                    ->where('inscriptions.id', $inscription->id)
+                    ->first();
+                $data = [
+                    'user' => $user,
+                    'datainscription' => $datainscription,
+                ];
+
+                Mail::to($user->email)
+                    ->cc(config('services.correonotificacion.inscripcion'))
+                    ->send(new \App\Mail\InscriptionCreated($data));
+
+                DB::commit(); // Confirmar la transacción
+                return redirect()->route('inscriptions.paymentniubiz', ['inscription' => $inscription->id]);
+            }
+
+        } catch (\Exception $e) {
+            DB::rollBack(); // Revertir la transacción en caso de error
+            Log::error('Error en el registro manual: '.$e->getMessage());
+            return redirect()->back()->with('error', 'Ocurrió un error al realizar la inscripción.');
+        }
+    }
+
 
     public function paymentNiubiz(Inscription $inscription)
     {
@@ -593,7 +732,7 @@ class InscriptionController extends Controller
                 if($specialcode->amount == $inscription->total){
                     return redirect()->route('inscriptions.index')->with('success', 'Inscripción realizada con éxito, no requiere pago.');
                 }else{
-                    
+
                 }
             }
         }
@@ -663,7 +802,7 @@ class InscriptionController extends Controller
     }
 
     public function confirmPaymentNiubiz(Request $request){
-        
+
         $auth = base64_encode(config('services.niubiz.user').':'.config('services.niubiz.password'));
         $accessToken = Http::withHeaders([
                 'Authorization' => 'Basic '.$auth,
@@ -713,7 +852,7 @@ class InscriptionController extends Controller
             $payment->save();
 
         }else{
-            
+
         }
 
         $data = [
@@ -796,7 +935,7 @@ class InscriptionController extends Controller
             exit;
         }
 
-        
+
     }
 
 }

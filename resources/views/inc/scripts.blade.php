@@ -33,7 +33,7 @@
             <script src="{{asset('plugins/src/table/datatable/button-ext/dataTables.buttons.min.js')}}"></script> --}}
             <script src="{{asset('assets/js/apps/users/list.js')}}"></script>
             @break
-        
+
         @case('works')
             {{-- Works --}}
             <script src="{{asset('plugins/src/table/datatable/datatables.js')}}"></script>
@@ -88,6 +88,12 @@
             <script src="{{ asset('plugins/src/filepond/FilePondPluginFileValidateType.min.js') }}"></script>
             <script src="{{ asset('assets/js/apps/inscriptions/create.js') }}?v={{ config('app.version') }}"></script>
             @break
+        @case('inscriptions_manual')
+            {{-- Inscriptions --}}
+            <script src="{{ asset('plugins/src/filepond/filepond.min.js') }}"></script>
+            <script src="{{ asset('plugins/src/filepond/FilePondPluginFileValidateType.min.js') }}"></script>
+            <script src="{{ asset('assets/js/apps/inscriptions/create-manual.js') }}?v={{ config('app.version') }}"></script>
+            @break
         @case('inscriptions_show')
             {{-- Inscriptions --}}
             <script src="{{ asset('plugins/src/html2canvas/html2canvas.min.js')}}"></script>
@@ -101,7 +107,7 @@
             <script src="{{asset('plugins/src/table/datatable/button-ext/dataTables.buttons.min.js')}}"></script>
             <script src="{{asset('assets/js/apps/beneficiarios_becas/list.js')}}?v={{ config('app.version') }}"></script>
             @break
-        
+
         @case('gafetes')
             {{-- Gafetes --}}
             <script src="{{ asset('plugins/src/html2canvas/html2canvas.min.js')}}"></script>
