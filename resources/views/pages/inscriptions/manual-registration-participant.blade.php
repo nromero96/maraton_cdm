@@ -61,6 +61,23 @@
                             </div>
 
                             <div class="col-md-4">
+                                <label for="inputDocumentType" class="form-label fw-bold mb-0">{{__("Tipo de documento")}}</label>
+                                <select name="document_type" class="form-select" id="inputDocumentType">
+                                    <option value="">Seleccione...</option>
+                                    <option value="DNI">DNI</option>
+                                    <option value="Carnet de extranjería">Carnet de extranjería</option>
+                                    <option value="Pasaporte">Pasaporte</option>
+                                </select>
+                                {!!$errors->first("document_type", "<span class='text-danger'>:message</span>")!!}
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="inputDocumentNumber" class="form-label fw-bold mb-0">{{__("Número de documento")}}</label>
+                                <input type="text" name="document_number" class="form-control" id="inputDocumentNumber" value="">
+                                {!!$errors->first("document_number", "<span class='text-danger'>:message</span>")!!}
+                            </div>
+
+                            <div class="col-md-4">
                                 <label for="inputPassword" class="form-label fw-bold mb-0">{{__("Contraseña")}} <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" name="inputPassword" id="inputPassword" value="{{ old('password') }}" required>
                                 {!!$errors->first("password", "<span class='text-danger'>:message</span>")!!}
@@ -80,7 +97,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="inputSolapin" class="form-label fw-bold">{{__("Solapín/Gafete")}}</label>
+                                <label for="inputSolapin" class="form-label fw-bold mb-0">{{__("Solapín/Gafete")}}</label>
                                 <input type="text" class="form-control" name="inputSolapin" id="inputSolapin" value="{{ old('solapin') }}">
                                 {!!$errors->first("solapin", "<span class='text-danger'>:message</span>")!!}
                             </div>

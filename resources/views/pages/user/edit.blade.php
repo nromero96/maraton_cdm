@@ -76,37 +76,37 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="inputState" class="form-label fw-bold">{{__("Estado/Provincia")}}</label>
-                                <input type="text" name="state" class="form-control" id="inputState" value="{{$user->state}}" required>
+                                <input type="text" name="state" class="form-control" id="inputState" value="{{$user->state}}" >
                                 {!!$errors->first("state", "<span class='text-danger'>:message</span>")!!}
                             </div>
                             <div class="col-md-4">
                                 <label for="inputCity" class="form-label fw-bold">{{__("Ciudad")}}</label>
-                                <input type="text" name="city" class="form-control" id="inputCity" value="{{$user->city}}" required>
+                                <input type="text" name="city" class="form-control" id="inputCity" value="{{$user->city}}" >
                                 {!!$errors->first("city", "<span class='text-danger'>:message</span>")!!}
                             </div>
                             <div class="col-md-8">
                                 <label for="inputAddress" class="form-label fw-bold">{{__("Dirección")}}</label>
-                                <input type="text" name="address" class="form-control" id="inputAddress" value="{{$user->address}}" required>
+                                <input type="text" name="address" class="form-control" id="inputAddress" value="{{$user->address}}" >
                                 {!!$errors->first("address", "<span class='text-danger'>:message</span>")!!}
                             </div>
                             <div class="col-md-4">
                                 <label for="inputPostalCode" class="form-label fw-bold">{{__("Código Postal")}}</label>
-                                <input type="number" name="postal_code" class="form-control" id="inputPostalCode" value="{{$user->postal_code}}" required>
+                                <input type="number" name="postal_code" class="form-control" id="inputPostalCode" value="{{$user->postal_code}}" >
                                 {!!$errors->first("postal_code", "<span class='text-danger'>:message</span>")!!}
                             </div>
                             <div class="col-md-4">
                                 <label for="inputPhoneNumber" class="form-label fw-bold">{{__("Teléfono")}}</label>
                                 <div class="d-flex">
                                     <div class="w-25">
-                                        <input type="text" name="phone_code" class="form-control rounded-0 rounded-start" id="inputPhoneCode" value="{{$user->phone_code}}" placeholder="+00" required>
+                                        <input type="text" name="phone_code" class="form-control rounded-0 rounded-start" id="inputPhoneCode" value="{{$user->phone_code}}" placeholder="+00" >
                                         <small>{{ __('Cod. País') }}</small>
                                     </div>
                                     <div class="w-25">
-                                        <input type="number" name="phone_code_city" class="form-control rounded-0" id="inputPhoneCodeCity" value="{{$user->phone_code_city}}" placeholder="01" required>
+                                        <input type="number" name="phone_code_city" class="form-control rounded-0" id="inputPhoneCodeCity" value="{{$user->phone_code_city}}" placeholder="01" >
                                         <small>{{ __('Ciudad') }}</small>
                                     </div>
                                     <div class="w-50">
-                                        <input type="number" name="phone_number" class="form-control rounded-0 rounded-end" id="inputPhoneNumber" value="{{$user->phone_number}}" placeholder="8765432" required>
+                                        <input type="number" name="phone_number" class="form-control rounded-0 rounded-end" id="inputPhoneNumber" value="{{$user->phone_number}}" placeholder="8765432" >
                                         <small>{{ __('Número') }}</small>
                                     </div>
                                 </div>
@@ -119,11 +119,11 @@
                                 <label for="inputPhoneNumber" class="form-label fw-bold">{{__("WhatsApp")}}</label>
                                 <div class="d-flex">
                                     <div class="w-25">
-                                        <input type="text" name="whatsapp_code" class="form-control rounded-0 rounded-start" id="inputPhoneCode" value="{{$user->whatsapp_code}}" placeholder="+00" required>
+                                        <input type="text" name="whatsapp_code" class="form-control rounded-0 rounded-start" id="inputPhoneCode" value="{{$user->whatsapp_code}}" placeholder="+00" >
                                         <small>{{ __('Cod. País') }}</small>
                                     </div>
                                     <div class="w-75">
-                                        <input type="number" name="whatsapp_number" class="form-control rounded-0 rounded-end" id="inputPhoneNumber" value="{{$user->whatsapp_number}}" placeholder="8765432" required>
+                                        <input type="number" name="whatsapp_number" class="form-control rounded-0 rounded-end" id="inputPhoneNumber" value="{{$user->whatsapp_number}}" placeholder="8765432" >
                                         <small>{{ __('Número') }}</small>
                                     </div>
                                 </div>
@@ -133,7 +133,7 @@
 
                             <div class="col-md-12">
                                 <label for="inputWorkplace" class="form-label fw-bold">{{__("Centro de trabajo")}}</label>
-                                <input type="text" name="workplace" class="form-control" id="inputWorkplace" value="{{$user->workplace}}" required>
+                                <input type="text" name="workplace" class="form-control" id="inputWorkplace" value="{{$user->workplace}}" >
                                 {!!$errors->first("workplace", "<span class='text-danger'>:message</span>")!!}
                             </div>
 

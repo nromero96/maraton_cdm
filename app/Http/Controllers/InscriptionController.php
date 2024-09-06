@@ -623,6 +623,8 @@ class InscriptionController extends Controller
             $user->lastname = $request->lastname ?? '';
             $user->second_lastname = $request->second_lastname ?? '';
             $user->email = $request->email ?? '';
+            $user->document_type = $request->document_type ?? '';
+            $user->document_number = $request->document_number ?? '';
             $user->country = $request->country ?? '';
             $user->password = bcrypt($request->inputPassword) ?? '';
             $user->solapin_name = $request->inputSolapin ?? '';

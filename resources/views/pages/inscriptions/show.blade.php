@@ -28,12 +28,12 @@
                 <div class="statbox widget box box-shadow ficha-inscripcion">
                     <div class="widget-header px-3">
                         <div class="row g-3">
-                            <div class="col-md-8 py-3">
+                            <div class="col-md-8 pt-3">
                                 <h4 class="px-0 py-0">
                                     {{__("Inscripción")}} # {{ $inscription->id }}
                                 </h4>
                             </div>
-                            <div class="col-md-4 py-3 text-end">
+                            <div class="col-md-4 pt-3 text-end">
 
                                 <a href="#" class="btn btn-primary px-1 py-1 btnprintficha" style="margin-top: -6px;">
                                     <svg width="14" height="14" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -65,6 +65,19 @@
                         </div>
                     </div>
                     <div class="widget-content widget-content-area pt-0">
+                        <div class="row g-3">
+                            <div class="col-md-12 mb-2">
+                                @can('users.index')
+                                    <a href="{{ route('users.edit', $inscription->user_id) }}" class="btn btn-light-primary px-1 py-0 btneditinsc" target="_blank">
+                                        Editar datos del participante <svg width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                        </svg>
+                                    </a>
+                                @endcan
+
+                            </div>
+                        </div>
                         <div class="row g-3">
                             <div class="col-md-4">
                                 <label class="form-label fw-bold mb-0">{{__("Nombre completo")}}:</label><br>
@@ -387,7 +400,7 @@
 
 
                             <div class="col-md-5 text-end align-self-end">
-                                
+
                                 @if(\Auth::user()->hasRole('Administrador') || \Auth::user()->hasRole('Secretaria'))
 
                                     @if($inscription->status == 'Pagado' && $inscription->status_compr == 'Ninguna' )
@@ -399,17 +412,17 @@
                                     @if($inscription->status_compr == 'Pendiente' || $inscription->status_compr == 'Procesando')
                                         <span class="badge badge-light-warning">Generando Comprobante...</span>
                                     @endif
-                                
+
                                 @endif
 
                                 @if($inscription->status_compr == 'Informado')
                                     <span class="badge badge-light-success">Comprobante Emitido: {{ $inscription->num_compr }}</span><br>
                                     @if($inscription->compr_pdf == 'T')
-                                        <a href="{{ asset('storage/uploads/comprobantes_file').'/'.$inscription->num_compr.'.pdf'}}" target="_blank" class="text-info">{{__("PDF")}}</a> 
+                                        <a href="{{ asset('storage/uploads/comprobantes_file').'/'.$inscription->num_compr.'.pdf'}}" target="_blank" class="text-info">{{__("PDF")}}</a>
                                     @endif
 
                                     @if($inscription->compr_xml == 'T')
-                                        | <a href="{{ asset('storage/uploads/comprobantes_file').'/'.$inscription->num_compr.'.zip'}}" target="_blank" class="text-info">{{__("XML")}}</a> 
+                                        | <a href="{{ asset('storage/uploads/comprobantes_file').'/'.$inscription->num_compr.'.zip'}}" target="_blank" class="text-info">{{__("XML")}}</a>
                                     @endif
 
                                     @if($inscription->compr_cdr == 'T')
